@@ -14,7 +14,7 @@ const getLocalData = ()=> // function deleting the data from LocalStorage
 
 function Todo() {
   const [item, setItem] = useState('');
-  const [arrayItem, setArrayItem] = useState([]);
+  const [arrayItem, setArrayItem] = useState(getLocalData());
   const itemName = (e) => {
     setItem(e.target.value);
   };
