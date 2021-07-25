@@ -43,6 +43,7 @@ function Todo() {
   },[arrayItem]);
   
     const handler = (event) => {  // enter button event
+      console.log(event.charCode);
       if(event.charCode == 13){ // 13 is the value of Enter
         addItem();
       }
