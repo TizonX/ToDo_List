@@ -1,8 +1,6 @@
                                                         https://todoreactapplicaion.netlify.app/
                                                         
-                                                        
-                                                        you can see the sample using this link:  
-
+                                                      
 
 
 
