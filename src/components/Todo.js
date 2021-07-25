@@ -42,6 +42,12 @@ function Todo() {
     localStorage.setItem('data',JSON.stringify(arrayItem))    // storing data inside the localStorage
   },[arrayItem]);
   
+    const handler = (event) => {  // enter button event
+      if(event.charCode == 13){ // 13 is the value of Enter
+        addItem();
+      }
+    };
+  
   return (
     <>
       <div className="main-div">
@@ -51,6 +57,7 @@ function Todo() {
               onChange={itemName}
               type="text"
               placeholder="add items"
+              onKeyPress={(e) => handler(e)} // when press enter Item will store
             ></input>
             <i
               onClick={addItem}
