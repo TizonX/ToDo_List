@@ -1,4 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+const getLocalData = ()=> // function deleting the data from LocalStorage
+  {
+    let data = localStorage.getItem('data');
+    if(data)
+    {
+      return JSON.parse(localStorage.getItem('data'));
+    }
+    else{
+      return [];
+    }
+  }
 
 function Todo() {
   const [item, setItem] = useState('');
@@ -24,6 +36,12 @@ function Todo() {
     });
     setArrayItem(afterDeletedItems); // remaining item will display
   };
+  
+    useEffect(()=>
+  {
+    localStorage.setItem('data',JSON.stringify(arrayItem))    // storing data inside the localStorage
+  },[arrayItem]);
+  
   return (
     <>
       <div className="main-div">
