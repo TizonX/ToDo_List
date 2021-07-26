@@ -22,17 +22,16 @@ function Todo() {
     if (!item) {    // ristricted to store null values "","",""]
                     
     } else {
-      setArrayItem((getOldItems) => {
-        return [...getOldItems, item];    // array destructuring 
-      });
+      const idObject = {id: new Date().getTime().toString(), name:items}
+      setArrayItem([...arrayItem, idObject]);
       setItem(); // after submit input will empty // currently not working (don't know Y);
     }
   };
 
-  const delItem = (id) => {
+  const delItem = (index) => {
     // geting unique key with ID
-    const afterDeletedItems = arrayItem.filter((element, index) => {
-      return id !== index;
+    const afterDeletedItems = arrayItem.filter((element) => {
+      return index !== element.id;
     });
     setArrayItem(afterDeletedItems); // remaining item will display
   };
@@ -68,12 +67,12 @@ function Todo() {
           </div>
 
           <div className="showItems">
-            {arrayItem.map((showItems, index) => {
+            {arrayItem.map((showItems) => {
               return (
-                <div className="eachItem" key={index}>
-                  <h3>{showItems}</h3>
+                <div className="eachItem" key={showItems.id}>
+                  <h3>{showItems.name}</h3>
                   <i
-                    onClick={() => delItem(index)} // sending key as a parameter
+                    onClick={() => delItem(showItems.id)} // sending key as a parameter
                     className="far fa-trash-alt add-btn"
                     title="delete item"
                   ></i>
